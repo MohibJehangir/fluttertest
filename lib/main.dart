@@ -24,7 +24,7 @@ class Album {
   final int id;
   final String title;
 
-  const Album({required this.userId, required this.id, required this.title});
+  const Album({required this.userId,required  this.id,required  this.title});
 
   factory Album.fromJson(Map<String, dynamic> json) {
     return Album(
@@ -75,6 +75,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+//    String name;
     return MaterialApp(
       title: 'Fetch Data Example',
       theme: ThemeData(
@@ -84,21 +86,24 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: const Text('Fetch Data Example'),
         ),
-        body: Center(
-          child: FutureBuilder<Album>(
-            future: futureAlbum,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Text(snapshot.data!.title);
-              } else if (snapshot.hasError) {
-                return Text('${snapshot.error}');
-              }
-
-              // By default, show a loading spinner.
-              return const CircularProgressIndicator();
-            },
-          ),
-        ),
+        body: Column(
+          children: [
+            Center(
+                child:FutureBuilder<Album>(
+                    future: futureAlbum,
+                    builder:(context,snapshot) {
+                      if(snapshot.hasData){
+                        return Text(snapshot.data!.title);
+                      }else if(snapshot.hasError){
+                        return Text('${snapshot.error}');
+                      }
+                      return CircularProgressIndicator();
+                    }
+                )
+            ),
+//            RaisedButton(onPressed: (){},child:Text("Mohib Shab"))
+          ],
+        )
       ),
     );
   }

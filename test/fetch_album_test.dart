@@ -34,7 +34,7 @@ void main() {
         // Use Mockito to return an unsuccessful response when it calls the
         // provided http.Client.
         when(client
-            .get(Uri.parse('https://jsonplaceholde.typicode.com/albums/1')))
+            .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1')))
             .thenAnswer((_) async => http.Response('Not Found', 404));
 
         expect(fetchAlbum(client), throwsException);
