@@ -5,7 +5,7 @@ pipeline {
         stage('Code Analysis'){
             steps{
                 sh """
-                cd /var/lib/jenkins/workspace/Flutter
+                cd /var/lib/jenkins/workspace/Flutter_jenkinsfile
                 flutter analyze
                 """
             }
@@ -13,7 +13,7 @@ pipeline {
         stage('flutter Unit test') {
             steps {
                  sh """
-                cd /var/lib/jenkins/workspace/Flutter
+                cd /var/lib/jenkins/workspace/Flutter_jenkinsfile
                 flutter test
                 """
             }
@@ -21,7 +21,7 @@ pipeline {
         stage('Code Coverage') {
             steps {
                  sh """
-                cd /var/lib/jenkins/workspace/Flutter
+                cd /var/lib/jenkins/workspace/Flutter_jenkinsfile
                 flutter test --coverage
                 genhtml coverage/lcov.info -o coverage/html
                 """
