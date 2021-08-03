@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Code Analysis'){
             steps{
-		sh 'chmod -R 777 $WORKSPACE/Flutter_jenkinsfile'
+		sh 'chmod -R 777 $WORKSPACE/'
                 sh """
                 cd /var/lib/jenkins/workspace/Flutter_jenkinsfile
                 flutter analyze
