@@ -39,6 +39,7 @@ pipeline {
                         throw e
                     } 
 					finally {
+						sh "cd $WORKSPACE/"
                         
 						sh "python3 lcov_cobertura.py $WORKSPACE/Flutter_jenkinsfile/coverage/lcov.info --output $WORKSPACE/Flutter_jenkinsfile/coverage/cobertura_coverage.xml"
 						sh "cd $WORKSPACE/Flutter_jenkinsfile/coverage/ && ls -l"
