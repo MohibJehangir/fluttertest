@@ -1,9 +1,10 @@
 pipeline {
     agent any
-sh 'chmod 777 $WORKSPACE/Flutter_jenkinsfile'
+
     stages {
         stage('Code Analysis'){
             steps{
+		sh 'chmod -R 777 $WORKSPACE/Flutter_jenkinsfile'
                 sh """
                 cd /var/lib/jenkins/workspace/Flutter_jenkinsfile
                 flutter analyze
