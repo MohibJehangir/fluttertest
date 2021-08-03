@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+sh 'chmod 777 $WORKSPACE/Flutter_jenkinsfile'
     stages {
         stage('Code Analysis'){
             steps{
