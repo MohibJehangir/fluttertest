@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Code Analysis'){
             steps{
-		sh 'chmod -R 777 $WORKSPACE/'
                 sh """
                 cd /var/lib/jenkins/workspace/Flutter_jenkinsfile
                 flutter analyze
@@ -19,16 +18,7 @@ pipeline {
                 """
             }
         }
-        /*stage('Code Coverage') {
-            steps {
-                 sh """
-                cd /var/lib/jenkins/workspace/Flutter_jenkinsfile
-                flutter test --coverage
-                genhtml coverage/lcov.info -o coverage/html
-                """
-            }
-        }*/
-        stage('Test') {
+        stage('Code Coverage') {
             steps {
 					script {
                     try {
