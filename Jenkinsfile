@@ -6,15 +6,15 @@ pipeline {
             steps{
                 sh """
                 cd /var/lib/jenkins/workspace/Flutter_jenkinsfile
-                Flutter analyze
+                flutter analyze
                 """
             }
         }
-        stage('Flutter Unit test') {
+        stage('flutter Unit test') {
             steps {
                  sh """
                 cd /var/lib/jenkins/workspace/Flutter_jenkinsfile
-                Flutter test
+                flutter test
                 """
             }
         }
@@ -22,7 +22,7 @@ pipeline {
             steps {
                  sh """
                 cd /var/lib/jenkins/workspace/Flutter_jenkinsfile
-                Flutter test --coverage
+                flutter test --coverage
                 genhtml coverage/lcov.info -o coverage/html
                 """
             }
@@ -32,7 +32,7 @@ pipeline {
 					script {
                     try {
                         sh "rm -rf $WORKSPACE/Flutter_jenkinsfile/coverage"	
-						sh "cd $WORKSPACE/Flutter_jenkinsfile && Flutter test --coverage"
+						sh "cd $WORKSPACE/Flutter_jenkinsfile && flutter test --coverage"
 						sh "cd $WORKSPACE/Flutter_jenkinsfile/coverage && ls -l"	
                     } catch (e) {
                         throw e
@@ -52,7 +52,4 @@ pipeline {
         } 
     }
     }
-
-
-
 
