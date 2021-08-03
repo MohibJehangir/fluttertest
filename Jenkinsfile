@@ -33,17 +33,17 @@ pipeline {
 					script {
                     try {
                         sh "rm -rf $WORKSPACE/Flutter_jenkinsfile/coverage"	
-						sh "cd $WORKSPACE/Flutter_jenkinsfile && flutter test --coverage"
-						sh "cd $WORKSPACE/Flutter_jenkinsfile/coverage && ls -l"	
+						sh "cd $WORKSPACE/ && flutter test --coverage"
+						sh "cd $WORKSPACE/coverage && ls -l"	
                     } catch (e) {
                         throw e
                     } 
 					finally {
 						sh "cd $WORKSPACE/"
                         
-						sh "python3 lcov_cobertura.py $WORKSPACE/Flutter_jenkinsfile/coverage/lcov.info --output $WORKSPACE/Flutter_jenkinsfile/coverage/cobertura_coverage.xml"
-						sh "cd $WORKSPACE/Flutter_jenkinsfile/coverage/ && ls -l"
-						sh "cd $WORKSPACE/Flutter_jenkinsfile/coverage && cp cobertura_coverage.xml $WORKSPACE"
+						sh "python3 lcov_cobertura.py $WORKSPACE/coverage/lcov.info --output $WORKSPACE/coverage/cobertura_coverage.xml"
+						sh "cd $WORKSPACE/coverage/ && ls -l"
+						sh "cd $WORKSPACE/coverage && cp cobertura_coverage.xml $WORKSPACE"
 						sh "cd $WORKSPACE && ls -l"	
 						step([$class: 'CoberturaPublisher', coberturaReportFile: 'cobertura_coverage.xml'])
                     }	
